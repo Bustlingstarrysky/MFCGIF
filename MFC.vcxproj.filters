@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\第三方代码">
+      <UniqueIdentifier>{62ab434c-d2e8-41d0-b087-ef67bc9781d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\implant">
+      <UniqueIdentifier>{a2d8f9e4-61d2-4327-b2f2-df3910dee087}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\drawpicture">
+      <UniqueIdentifier>{f91566e8-ec87-40ed-b809-203a36735290}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\第三方代码">
+      <UniqueIdentifier>{29a2b636-8462-4eb7-8d7e-2a23b3e1e846}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\第三方代码\implant">
+      <UniqueIdentifier>{e51feb6b-7081-4317-a5fc-fba3c35a7b04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\第三方代码\drawpicture">
+      <UniqueIdentifier>{7c8da3e6-c648-4c70-aeb0-61fd964a47a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\第三方代码\lucency">
+      <UniqueIdentifier>{bd09b763-0735-444d-a77f-43244aa0781c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\lucency">
+      <UniqueIdentifier>{0c106ecb-450c-4ed2-8e0b-7a54bcf4a8f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\第三方代码\gif">
+      <UniqueIdentifier>{09436c6f-020f-4255-b956-47e824dcb1ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\gif">
+      <UniqueIdentifier>{98540476-1601-461a-a0e7-55203002ba4f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MFC.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MFCDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\implant\implant.h">
+      <Filter>头文件\第三方代码\implant</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\drawpicture\DRAW.h">
+      <Filter>头文件\第三方代码\drawpicture</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\lucency\lucency.h">
+      <Filter>头文件\第三方代码\lucency</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\gif\PictureEX.h">
+      <Filter>头文件\第三方代码\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\gif\MyWay.h">
+      <Filter>头文件\第三方代码\gif</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MFC.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MFCDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\implant\impalnt.cpp">
+      <Filter>源文件\第三方代码\implant</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\drawpicture\DRAW.cpp">
+      <Filter>源文件\第三方代码\drawpicture</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\lucency\lucency.cpp">
+      <Filter>源文件\第三方代码\lucency</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\gif\PictureEX.cpp">
+      <Filter>源文件\第三方代码\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\gif\MyWay.cpp">
+      <Filter>源文件\第三方代码\gif</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MFC.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MFC.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\MFC.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
