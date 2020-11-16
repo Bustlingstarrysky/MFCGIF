@@ -56,6 +56,17 @@ void WE::Drawpic::DRAWDRAWDC(int ID, CString& path, CDialog* Dlg) {
 	::ReleaseDC(Dlg->m_hWnd, picDC);
 }
 
+void WE::Drawpic::DRAWDRAWDC(int ID, CImage& image, CDialogEx* Dlg) {
+	CRect rect;
+	Dlg->GetDlgItem(ID)->GetWindowRect(&rect);
+	Dlg->ScreenToClient(&rect);
+	auto picDC = ::GetDC(Dlg->m_hWnd);
+	::SetStretchBltMode(picDC, HALFTONE);
+	::SetBrushOrgEx(picDC, 0, 0, NULL);
+	image.Draw(picDC, rect);
+	::ReleaseDC(Dlg->m_hWnd, picDC);
+}
+
 void WE::Drawpic::DRAWDRAW(int ID, CImage& image, CDialog* Dlg) {
 	CRect rect;
 	Dlg->GetDlgItem(ID)->GetClientRect(&rect);

@@ -1,5 +1,4 @@
-﻿
-// MFC.cpp: 定义应用程序的类行为。
+﻿// MFC.cpp: 定义应用程序的类行为。
 //
 
 #include "pch.h"
@@ -11,13 +10,11 @@
 #define new DEBUG_NEW
 #endif
 
-
 // CMFCApp
 
 BEGIN_MESSAGE_MAP(CMFCApp, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
-
 
 // CMFCApp 构造
 
@@ -30,16 +27,15 @@ CMFCApp::CMFCApp()
 	// 将所有重要的初始化放置在 InitInstance 中
 }
 
-
 // 唯一的 CMFCApp 对象
 
 CMFCApp theApp;
-
 
 // CMFCApp 初始化
 
 BOOL CMFCApp::InitInstance()
 {
+	AfxOleInit();
 	// 如果一个运行在 Windows XP 上的应用程序清单指定要
 	// 使用 ComCtl32.dll 版本 6 或更高版本来启用可视化方式，
 	//则需要 InitCommonControlsEx()。  否则，将无法创建窗口。
@@ -51,7 +47,6 @@ BOOL CMFCApp::InitInstance()
 	InitCommonControlsEx(&InitCtrls);
 
 	CWinApp::InitInstance();
-
 
 	AfxEnableControlContainer();
 
@@ -104,4 +99,3 @@ BOOL CMFCApp::InitInstance()
 	//  而不是启动应用程序的消息泵。
 	return FALSE;
 }
-

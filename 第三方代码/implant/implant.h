@@ -7,6 +7,7 @@ namespace WE {
 		void IMPlant(int ID, CDialog* MTTHIS);
 
 		void IMPlant(int ID, CDialogEx* Dlg, CDialogEx* MTTHIS);
+		void IMPlant_TESHI(int ID, CDialogEx* Dlg, CDialogEx* MTTHS);
 		void IMPlant(CRect& Rect, CDialogEx* Dlg, CDialogEx* MTTHIS);
 	}
 }

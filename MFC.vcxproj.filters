@@ -43,6 +43,42 @@
     <Filter Include="源文件\第三方代码\gif">
       <UniqueIdentifier>{98540476-1601-461a-a0e7-55203002ba4f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\第三方代码\mp3">
+      <UniqueIdentifier>{66620002-2497-4b8c-8de0-cc0dcfdc2234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\mp3">
+      <UniqueIdentifier>{00606b79-390a-4496-96ff-4e1ec33ee11a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\第三方代码\窗口动画">
+      <UniqueIdentifier>{22380ca4-3481-4aed-9eaf-596864fb0d53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\窗口动画">
+      <UniqueIdentifier>{7acf9db3-0be5-47c8-a996-fd52aaf01485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\第三方代码\消息传递">
+      <UniqueIdentifier>{56e243d4-2a4f-4dc6-b0fd-53a895a21741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\消息传递">
+      <UniqueIdentifier>{c5811c19-87cf-40fc-b76f-b9730b8a5587}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\第三方代码\主题">
+      <UniqueIdentifier>{4706fb29-493d-43c4-ae90-61e51b0a33c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\主题">
+      <UniqueIdentifier>{cb7e5366-c89e-4aa0-bb7f-277b4b7714b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\第三方代码\risize">
+      <UniqueIdentifier>{33f56711-06a6-4dec-9c0b-01b0a5732520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\risize">
+      <UniqueIdentifier>{c2abd9c4-2998-4aff-9c7b-c4bc4f558b35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\第三方代码\modbus">
+      <UniqueIdentifier>{0606212a-bcf1-4e16-a5ad-66bcd1364482}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\modbus">
+      <UniqueIdentifier>{cb8cf802-357b-4192-9a18-9df138bee040}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MFC.h">
@@ -78,6 +114,51 @@
     <ClInclude Include="第三方代码\gif\MyWay.h">
       <Filter>头文件\第三方代码\gif</Filter>
     </ClInclude>
+    <ClInclude Include="MFCHOMEGIF.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\mp3\AudioClip.h">
+      <Filter>头文件\第三方代码\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\窗口动画\CDlgFlash.h">
+      <Filter>头文件\第三方代码\窗口动画</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\消息传递\RunMessage.hpp">
+      <Filter>头文件\第三方代码\消息传递</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\gif\MyWayGifControl.h">
+      <Filter>头文件\第三方代码\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\主题\changetheme.hpp">
+      <Filter>头文件\第三方代码\主题</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\主题\TheamName.h">
+      <Filter>头文件\第三方代码\主题</Filter>
+    </ClInclude>
+    <ClInclude Include="MFC_PANEL_Dlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MFC_HALCON_Dlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\risize\riseze.h">
+      <Filter>头文件\第三方代码\risize</Filter>
+    </ClInclude>
+    <ClInclude Include="MFC_LIGHT_Dlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\modbus\Light.h">
+      <Filter>头文件\第三方代码\modbus</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\modbus\Modbus.h">
+      <Filter>头文件\第三方代码\modbus</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\modbus\ModbusRTU.h">
+      <Filter>头文件\第三方代码\modbus</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\modbus\SerialPort.h">
+      <Filter>头文件\第三方代码\modbus</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC.cpp">
@@ -103,6 +184,51 @@
     </ClCompile>
     <ClCompile Include="第三方代码\gif\MyWay.cpp">
       <Filter>源文件\第三方代码\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="MFCHOMEGIF.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\mp3\AudioClip.cpp">
+      <Filter>源文件\第三方代码\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\窗口动画\CDlgFlash.cpp">
+      <Filter>源文件\第三方代码\窗口动画</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\消息传递\factory.cpp">
+      <Filter>源文件\第三方代码\消息传递</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\主题\changetheme.cpp">
+      <Filter>源文件\第三方代码\主题</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\gif\MyWayGifControl.cpp">
+      <Filter>源文件\第三方代码\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\主题\ThemeName.cpp">
+      <Filter>源文件\第三方代码\主题</Filter>
+    </ClCompile>
+    <ClCompile Include="MFC_PANEL_Dlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MFC_HALCON_Dlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\risize\risize.cpp">
+      <Filter>源文件\第三方代码\risize</Filter>
+    </ClCompile>
+    <ClCompile Include="MFC_LIGHT_Dlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\modbus\Light.cpp">
+      <Filter>源文件\第三方代码\modbus</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\modbus\Modbus.cpp">
+      <Filter>源文件\第三方代码\modbus</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\modbus\ModbusRTU.cpp">
+      <Filter>源文件\第三方代码\modbus</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\modbus\SerialPort.cpp">
+      <Filter>源文件\第三方代码\modbus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

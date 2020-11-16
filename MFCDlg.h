@@ -4,7 +4,14 @@
 #pragma once
 #include "第三方代码/gif/PictureEX.h"
 #include "第三方代码/gif/MyWay.h"
+#include "第三方代码/gif/MyWayGifControl.h"
 // CMFCDlg 对话框
+#include "第三方代码/implant/implant.h"
+#include "MFCHOMEGIF.h"
+#include "第三方代码/mp3/AudioClip.h"
+#include "第三方代码/主题/changetheme.hpp"
+#include "thread"
+//#include "第三方代码/窗口动画/CDlgFlash.h"
 class CMFCDlg : public CDialogEx
 {
 	// 构造
@@ -21,9 +28,12 @@ public:
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 支持
 
-// 实现
+	static void BREAK(CMFCDlg*);
+
+	// 实现
 protected:
 	HICON m_hIcon;
+	MFCHOMEGIF _GIFDLG;
 
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();
@@ -36,11 +46,10 @@ protected:
 	//	CPictureEx ceshi;
 public:
 	//CPictureEX ceshi;
-//	CPictureEx ceshi;
-	//CPictureEx _gif;
-	WE::GIF_OpenCv _GIF;
-//	afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);
-//	afx_msg void OnTimer(UINT_PTR nIDEvent);
-//	afx_msg void OnClose();
+	WE::MyWayGifControl _GIF;
+
 	afx_msg void OnDestroy();
+
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);
 };

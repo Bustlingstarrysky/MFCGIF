@@ -1,115 +1,147 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "MyWay.h"
-#include "assert.h"//ÓÎÏ·½áÊø
+#include "assert.h"//ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
 //#include <afxcontrolbars.h>
 #include "../drawpicture/DRAW.h"
 void WE::GIF_OpenCv::Load(std::string path) {
-	//Ò»¿ªÊ¼¾ÍÊÇÕâÑù,ÕæµÄÃ»°ì·¨
+	//Ò»ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ã»ï¿½ì·¨
 	VideoCapture capture;
 	Mat frame;
-	capture.open(path); //¶ÁÈ¡gifÎÄ¼ş
+	capture.open(path); //ï¿½ï¿½È¡gifï¿½Ä¼ï¿½
 
-	Images.clear();//²»Ğ´Òì³£
-	while (true) {
-		capture >> frame;
-		if (frame.empty()) {
-			break;
-		}
+WE::CIMAGE_SHOW_CLASS::~CIMAGE_SHOW_CLASS() {}
+
+//å…ˆè¯´ä¸€ä¸‹è¿™ä¸ªæ–¹æ³•çš„å®ç°,//åœ¨å“ªé‡Œæ˜¾ç¤ºä¸è§„å®ƒç®¡
+void WE::CIMAGE_SHOW_CLASS::RunShow() {
+	//æˆ‘å¼€å¤šçº¿ç¨‹,è¿™ä¸ªæ—¶å€™è¦æœ‰ä¸€ä¸ªå‡½æ•°æ‰§è¡Œ
+	END = false;
+	PAUSE = false;
+	BEGIN = true;
+	func = std::async(std::launch::async, &CIMAGE_SHOW_CLASS::Async, this);
+}
 		//CImage image;
 		//MatChangeCImage(frame.clone(), image);
 
-		Images.push_back(frame.clone());
-	}//×Ô¼ºÈ¥µ÷ÓÃ
-	capture.release();
+void WE::CIMAGE_SHOW_CLASS::Stop() {
+	if (BEGIN) {
+		END = true;
+		BEGIN = false;
+		func.get();
+		//Sleep(100);
+	}
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½
 }
 
-void WE::GIF_OpenCv::Load(std::string path, CRect rect) {
-	//Ò»¿ªÊ¼¾ÍÊÇÕâÑù,ÕæµÄÃ»°ì·¨
-	VideoCapture capture;
-	Mat frame;
-	capture.open(path); //¶ÁÈ¡gifÎÄ¼ş
-	cv::Size DST(rect.Width(), rect.Height());
-	Images.clear();//²»Ğ´Òì³£
+void WE::CIMAGE_SHOW_CLASS::Pause() {
+	if (BEGIN) {
+		PAUSE = true;
+	}
+		cv::resize(frame, frame, DST, 0, 0, cv::INTER_CUBIC);
+		Images.push_back(frame.clone());
+	}//ï¿½Ô¼ï¿½È¥ï¿½ï¿½ï¿½ï¿½
+	capture.release();
+}
+void WE::GIF_OpenCv::Run(int ID, int time, CDialogEx* dlg) {
+	//ï¿½È¼Óµï¿½ï¿½ï¿½
+	stop = true;
+
+void WE::CIMAGE_SHOW_CLASS::GoOn() {
+	if (BEGIN) {
+		PAUSE = false;
+	}
+}
+	};
+
+bool WE::CIMAGE_SHOW_CLASS::IsRun() {
+	if (BEGIN) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+void WE::CIMAGE_SHOW_CLASS::Async() {
+	while (!END) {
+		for (auto& it : SHOWS) {
+			it->Show();//æ‰§è¡Œè¿™ä¸ªå‡½æ•°,è¿™ä¸ªå‡½æ•°æ˜¯ä»€ä¹ˆ,æˆ‘ä¸å…³å¿ƒ
+			Sleep(50);
+			while (PAUSE) {
+				Sleep(10);
+			}
+		}
+	}
+}
+
+void WE::CIMAGE_SHOW_CLASS::add_vector(INSHOW* m_inshow) {
+	SHOWS.push_back(std::unique_ptr<INSHOW>(m_inshow));
+}
+
+void WE::CIMAGE_SHOW_CLASS::pop_vector() {
+	if (!SHOWS.empty()) {
+		SHOWS.pop_back();//mainæ˜¯ä¸»æµç¨‹
+	}
+}
+
+WE::CIMAGE_INSHOW::CIMAGE_INSHOW(std::unique_ptr<CImage>& m_image, int m_nid, CDialogEx* m_dlg) {
+	image = std::move(m_image);
+	nID = m_nid;
+	dlg = m_dlg;
+}
+
+void WE::CIMAGE_INSHOW::Show() {
+	WE::Drawpic::DRAWDRAWDC(nID, *image, dlg);
+}
+
+WE::SHOW_FACTORY_CIMAGE_SHOW_CLASS::SHOW_FACTORY_CIMAGE_SHOW_CLASS(std::string& path, int nID, CDialogEx* dlg) :path(path), nID(nID), dlg(dlg) {};
+
+WE::SHOW_CLASS* WE::SHOW_FACTORY_CIMAGE_SHOW_CLASS::CREATE() {
+	cv::VideoCapture capture;
+	cv::Mat frame;
+	capture.open(path); //è¯»å–gifæ–‡ä»¶
+	auto result = new CIMAGE_SHOW_CLASS();
 	while (true) {
 		capture >> frame;
 		if (frame.empty()) {
 			break;
 		}
-		cv::resize(frame, frame, DST, 0, 0, cv::INTER_CUBIC);
-		Images.push_back(frame.clone());
-	}//×Ô¼ºÈ¥µ÷ÓÃ
+		cv::imwrite("picture/demo.jpg", frame);
+		auto image = std::make_unique<CImage>(CImage());
+		image->Load(L"picture/demo.jpg");
+		auto ptr = new CIMAGE_INSHOW(image, nID, dlg);
+		result->add_vector(ptr);
+	}//è‡ªå·±å»è°ƒç”¨
 	capture.release();
-}
-void WE::GIF_OpenCv::Run(int ID, int time, CDialogEx* dlg) {
-	//ÏÈ¼ÓµãÁË
-	stop = true;
 
-	//lambal;f
-	auto func = [](bool* stop, int ID, int time, CDialogEx* dlg, std::vector<Mat>* images)mutable ->void {
-		//	dlg->GetDlgItem(ID);
-
-		while (*stop) {
-			int i = 0;
-			for (auto& it : (*images)) {
-				cv::imwrite("picture/demo.jpg", it);
-				WE::Drawpic::DRAWDRAW(ID, CString(L"picture/demo.jpg"), dlg);
-				//	if (!(*stop)) {
-				//		return;
-				//	}//ÎÒ¾Í
-				Sleep(10);
-			}
-		}
-	};
-
-	TheFuture = std::async(func, &stop, ID, time, dlg, &Images);
+	return result;
 }
 
-void WE::GIF_OpenCv::Stop() {
-	stop = false;
-
-	TheFuture.get();
-	//Sleep(1000);
-
-	//TheFuture = nullptr;
+void WE::GIF_OpenCv::Load(std::string path, int nID, CDialogEx* dlg) {
+	SHOW_FACTORY_CIMAGE_SHOW_CLASS factory(path, nID, dlg);
+	_SHOW = factory.CREATE(); //è¿™æ˜¯ä¸€ä¸ªnew ,å¯ä»¥æŠŠ_SHOWæŒ‡å‘
 }
 
-WE::GIF_OpenCv::~GIF_OpenCv() {
-	if (stop == true) {
-		Stop();
+void WE::GIF_OpenCv::Run() {
+	if (_SHOW != nullptr) {
+		_SHOW->RunShow();
 	}
-}
-
-void WE::GIF_OpenCv::MatChangeCImage(Mat& mat, CImage& cImage) {
-	int width = mat.cols;
-	int height = mat.rows;
-	int channels = mat.channels();
-
-	cImage.Destroy(); //clear
-	cImage.Create(width,
-		height, //positive: left-bottom-up   or negative: left-top-down
-		8 * channels); //numbers of bits per pixel
-
-	//copy values
-	uchar* ps;
-	uchar* pimg = (uchar*)cImage.GetBits(); //A pointer to the bitmap buffer
-
-	//The pitch is the distance, in bytes. represent the beginning of
-	// one bitmap line and the beginning of the next bitmap line
-	int step = cImage.GetPitch();
-
-	for (int i = 0; i < height; ++i) {
-		ps = (mat.ptr<uchar>(i));
-		for (int j = 0; j < width; ++j) {
-			if (channels == 1) //gray
-			{
-				*(pimg + i * step + j) = ps[j];
-			}
 			else if (channels == 3) //color
 			{
 				for (int k = 0; k < 3; ++k) {
 					*(pimg + i * step + j * 3 + k) = ps[j * 3 + k];
-				}
-			}
-		}
+}
+
+void WE::GIF_OpenCv::Stop() {
+	if (_SHOW != nullptr) {
+		_SHOW->Stop();
+	}
+}
+
+WE::GIF_OpenCv::GIF_OpenCv() :_SHOW(nullptr) {}
+
+WE::GIF_OpenCv::~GIF_OpenCv() {
+	if (_SHOW != nullptr) {
+		_SHOW->Stop();
+		delete _SHOW;
 	}
 }
