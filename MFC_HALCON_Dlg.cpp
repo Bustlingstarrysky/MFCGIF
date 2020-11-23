@@ -34,6 +34,7 @@ END_MESSAGE_MAP()
 
 BOOL MFC_HALCON_Dlg::OnInitDialog() {
 	CDialogEx::OnInitDialog();
+	//是不是写一个对话框,直接在对话框调节大小,直接调用api实习那
 
 	// TODO:  在此添加额外的初始化
 	//添加这一个虚函数

@@ -3,11 +3,23 @@
 #include "assert.h"//��Ϸ����
 //#include <afxcontrolbars.h>
 #include "../drawpicture/DRAW.h"
-void WE::GIF_OpenCv::Load(std::string path) {
-	//һ��ʼ��������,���û�취
-	VideoCapture capture;
-	Mat frame;
-	capture.open(path); //��ȡgif�ļ�
+//void WE::GIF_OpenCv::Load(std::string path) {
+//	cv::VideoCapture capture;
+//	cv::Mat frame;
+//	capture.open(path);
+//	//
+//	while (true) {
+//		capture >> frame;
+//		if (frame.empty()) {
+//			break;
+//		}
+//		cv::imwrite("picture/demo.jpg", frame);
+//		CImage* ptr = new CImage();
+//		ptr->Load(L"picture/demo.jpg");
+//		Images.push_back(std::move(std::unique_ptr<CImage>(ptr)));
+//	}
+//	//结束了
+//}
 
 WE::CIMAGE_SHOW_CLASS::~CIMAGE_SHOW_CLASS() {}
 
@@ -19,8 +31,6 @@ void WE::CIMAGE_SHOW_CLASS::RunShow() {
 	BEGIN = true;
 	func = std::async(std::launch::async, &CIMAGE_SHOW_CLASS::Async, this);
 }
-		//CImage image;
-		//MatChangeCImage(frame.clone(), image);
 
 void WE::CIMAGE_SHOW_CLASS::Stop() {
 	if (BEGIN) {
@@ -31,26 +41,16 @@ void WE::CIMAGE_SHOW_CLASS::Stop() {
 	}
 	//���� ����ô��
 }
-
 void WE::CIMAGE_SHOW_CLASS::Pause() {
 	if (BEGIN) {
 		PAUSE = true;
 	}
-		cv::resize(frame, frame, DST, 0, 0, cv::INTER_CUBIC);
-		Images.push_back(frame.clone());
-	}//�Լ�ȥ����
-	capture.release();
 }
-void WE::GIF_OpenCv::Run(int ID, int time, CDialogEx* dlg) {
-	//�ȼӵ���
-	stop = true;
-
 void WE::CIMAGE_SHOW_CLASS::GoOn() {
 	if (BEGIN) {
 		PAUSE = false;
 	}
 }
-	};
 
 bool WE::CIMAGE_SHOW_CLASS::IsRun() {
 	if (BEGIN) {
@@ -65,7 +65,7 @@ void WE::CIMAGE_SHOW_CLASS::Async() {
 	while (!END) {
 		for (auto& it : SHOWS) {
 			it->Show();//执行这个函数,这个函数是什么,我不关心
-			Sleep(50);
+			Sleep(20);
 			while (PAUSE) {
 				Sleep(10);
 			}
@@ -125,12 +125,7 @@ void WE::GIF_OpenCv::Run() {
 	if (_SHOW != nullptr) {
 		_SHOW->RunShow();
 	}
-			else if (channels == 3) //color
-			{
-				for (int k = 0; k < 3; ++k) {
-					*(pimg + i * step + j * 3 + k) = ps[j * 3 + k];
 }
-
 void WE::GIF_OpenCv::Stop() {
 	if (_SHOW != nullptr) {
 		_SHOW->Stop();

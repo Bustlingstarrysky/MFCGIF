@@ -90,14 +90,12 @@ namespace WE {
 	class GIF_OpenCv
 	{
 	private:
+		//神经病,什么乐色
 
-		//CImage image;
-		//std::vector<Mat> MatImages;
+	//	std::vector<std::unique_ptr<CImage>> Images;
 		SHOW_CLASS* _SHOW;
-		//std::vector<Mat> Images;
 	private:
-		//std::future<void> TheFuture;
-		//bool stop;
+
 	public:
 
 		void Load(std::string path, int nID, CDialogEx* dlg);//不用,大小已经改好了
@@ -116,7 +114,6 @@ namespace WE {
 	{
 		//实现了吗
 	public:
-		//直接包装直接run
 
 	private:
 		GIF_OpenCv* prt;

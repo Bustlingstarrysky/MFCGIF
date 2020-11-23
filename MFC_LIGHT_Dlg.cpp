@@ -87,7 +87,7 @@ void MFC_LIGHT_Dlg::OnBnClickedFindcom() {
 	{
 		int   i = 0;
 		TCHAR  RegKeyName[128];
-		TCHAR SerialPortName[128];
+		TCHAR SerialPortName[128];//不管
 		DWORD  dwLong, dwSize;
 		while (TRUE) {
 			dwLong = dwSize = sizeof(RegKeyName);

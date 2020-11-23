@@ -126,10 +126,6 @@ BOOL CMFCDlg::OnInitDialog() {
 	//窗口动画
 	//myFlash = new CDlgFlash(this);
 	//SetTimer(1, 300, NULL);
-	CRect rect;
-	GetDlgItem(IDC_GIF)->GetClientRect(rect);
-	_GIF.Load("picture/流星.gif", rect);//开定时器
-	_GIF.Run(IDC_GIF, 10, this);
 
 	//or you can choose : myFlash=new CDlgFlash(this,9,10);
 
@@ -237,7 +233,7 @@ void CMFCDlg::OnTimer(UINT_PTR nIDEvent) {
 
 void CMFCDlg::OnShowWindow(BOOL bShow, UINT nStatus) {
 	CDialogEx::OnShowWindow(bShow, nStatus);
-
+	//
 	WE::MTVOID::IMPlant(IDC_SNOW, this, &_GIFDLG);
 
 	// TODO: 在此处添加消息处理程序代码
