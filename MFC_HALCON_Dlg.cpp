@@ -49,7 +49,7 @@ BOOL MFC_HALCON_Dlg::OnInitDialog() {
 	OpenWindow(0, 0, rect.Width(), rect.Width(), (Hlong)pWnd->m_hWnd, "", "", &hv_WindowHandle);// 窗口溢出,那就不用implant
 	HalconCpp::HDevWindowStack::Push(hv_WindowHandle);//最上层,并且不透明,可以选择采集图像 然后不就可以集成吗
 	HalconCpp::SetPart(hv_WindowHandle, 0, 0, rect.Width(), rect.Width());//
-
+//
 	//
 	_THREAD = nullptr;
 	JUDEG = false;
