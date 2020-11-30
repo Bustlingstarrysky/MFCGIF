@@ -79,6 +79,18 @@
     <Filter Include="源文件\第三方代码\modbus">
       <UniqueIdentifier>{cb8cf802-357b-4192-9a18-9df138bee040}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\第三方代码\大恒相机">
+      <UniqueIdentifier>{5809cf14-fec6-4290-93e5-7ec2829174f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\大恒相机">
+      <UniqueIdentifier>{906b689f-e478-4f3f-9c4a-da1221204d40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\第三方代码\halcon">
+      <UniqueIdentifier>{66515722-2fa7-4a03-9a20-2c5f38f17090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\第三方代码\halcon">
+      <UniqueIdentifier>{a1b9ad7d-47b5-4c75-9e75-7fe146e27af7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MFC.h">
@@ -159,6 +171,27 @@
     <ClInclude Include="第三方代码\modbus\SerialPort.h">
       <Filter>头文件\第三方代码\modbus</Filter>
     </ClInclude>
+    <ClInclude Include="第三方代码\大恒相机\ERROR.h">
+      <Filter>头文件\第三方代码\大恒相机</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\大恒相机\Camera.h">
+      <Filter>头文件\第三方代码\大恒相机</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\大恒相机\设置.h">
+      <Filter>头文件\第三方代码\大恒相机</Filter>
+    </ClInclude>
+    <ClInclude Include="MFC_SET_DLG.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="第三方代码\halcon\halcon画框.h">
+      <Filter>头文件\第三方代码\halcon</Filter>
+    </ClInclude>
+    <ClInclude Include="MFC摄像机信息.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MFC_PIC_COM_Dlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC.cpp">
@@ -229,6 +262,24 @@
     </ClCompile>
     <ClCompile Include="第三方代码\modbus\SerialPort.cpp">
       <Filter>源文件\第三方代码\modbus</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\大恒相机\ERROR.cpp">
+      <Filter>源文件\第三方代码\大恒相机</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\大恒相机\Camera.cpp">
+      <Filter>源文件\第三方代码\大恒相机</Filter>
+    </ClCompile>
+    <ClCompile Include="MFC_SET_DLG.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="第三方代码\halcon\halcon画框.cpp">
+      <Filter>源文件\第三方代码\halcon</Filter>
+    </ClCompile>
+    <ClCompile Include="MFC摄像机信息.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MFC_PIC_COM_Dlg.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

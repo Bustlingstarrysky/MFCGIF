@@ -1,5 +1,4 @@
 ﻿// MFC_HALCON_Dlg.cpp: 实现文件
-//
 
 #include "pch.h"
 #include "MFC.h"
@@ -7,6 +6,7 @@
 #include "afxdialogex.h"
 #include"HalconCpp.h"
 #include "第三方代码/消息传递/RunMessage.hpp"
+#include "第三方代码/halcon/halcon画框.h"
 // MFC_HALCON_Dlg 对话框
 
 IMPLEMENT_DYNAMIC(MFC_HALCON_Dlg, CDialogEx)
@@ -28,32 +28,21 @@ BEGIN_MESSAGE_MAP(MFC_HALCON_Dlg, CDialogEx)
 	ON_WM_SIZE()
 	//ON_EN_CHANGE(IDC_NUM, &MFC_HALCON_Dlg::OnEnChangeNum)
 	ON_WM_CLOSE()
+	//	ON_BN_CLICKED(IDC_SETTING, &MFC_HALCON_Dlg::OnBnClickedSetting)
 END_MESSAGE_MAP()
 
 // MFC_HALCON_Dlg 消息处理程序
 
 BOOL MFC_HALCON_Dlg::OnInitDialog() {
 	CDialogEx::OnInitDialog();
-	//是不是写一个对话框,直接在对话框调节大小,直接调用api实习那
-
-	// TODO:  在此添加额外的初始化
-	//添加这一个虚函数
-
-	// Local control variables
-
 	HalconCpp::HTuple m_ImageWidth, m_ImageHeight;//假设故障的问题,然后去实现
-
 	CWnd* pWnd = GetDlgItem(IDC_HALCON_PIC);
 	pWnd->GetWindowRect(&rect);
-	//MoveWindow(rect.left, rect.top, 1500 / 2, 1200 / 2); //大小怎么还是不对
-	OpenWindow(0, 0, rect.Width(), rect.Width(), (Hlong)pWnd->m_hWnd, "", "", &hv_WindowHandle);// 窗口溢出,那就不用implant
+	OpenWindow(0, 0, rect.Height(), rect.Height(), (Hlong)pWnd->m_hWnd, "", "", &hv_WindowHandle);// 窗口溢出,那就不用implant
 	HalconCpp::HDevWindowStack::Push(hv_WindowHandle);//最上层,并且不透明,可以选择采集图像 然后不就可以集成吗
-	HalconCpp::SetPart(hv_WindowHandle, 0, 0, rect.Width(), rect.Width());//
-//
-	//
+	HalconCpp::SetPart(hv_WindowHandle, 0, 0, rect.Height(), rect.Height());
 	_THREAD = nullptr;
 	JUDEG = false;
-	//
 	WE::MSGfactory<void(*)(MFC_HALCON_Dlg*), MFC_HALCON_Dlg*>(PANEL_HALCON_OpenCamera, OpenCamara, this);//
 	WE::MSGfactory<void(*)(MFC_HALCON_Dlg*), MFC_HALCON_Dlg*>(PANEL_HALCON_CLOSSCAMERA, CloseCramara, this);
 	WE::MSGfactory<void(*)(MFC_HALCON_Dlg*), MFC_HALCON_Dlg*>(PANEL_HALCON_Picturing, PICTURING, this);//一直采集
@@ -83,7 +72,7 @@ void MFC_HALCON_Dlg::CloseCramara(MFC_HALCON_Dlg* Dlg) {
 	if (Dlg->_THREAD != nullptr) {
 		Dlg->JUDEG = false;
 		Dlg->_THREAD->join();
-		delete Dlg->_THREAD;
+		delete Dlg->_THREAD;  //6
 		Dlg->_THREAD = nullptr;
 	}
 
@@ -94,6 +83,11 @@ void MFC_HALCON_Dlg::CloseCramara(MFC_HALCON_Dlg* Dlg) {
 
 void MFC_HALCON_Dlg::PICTURING(MFC_HALCON_Dlg* Dlg) {
 	auto func = [](MFC_HALCON_Dlg* Dlg) {
+		HObject  ho_RegionResult1, ho_RegionResult2, ho_RegionUnion;
+		gen_RECTANGLE(&ho_RegionResult1, Dlg->rect.Height() / 2, Dlg->rect.Height() / 2, 100, 50);
+		gen_CROSS(&ho_RegionResult2, Dlg->rect.Height() / 2, Dlg->rect.Height() / 2, 50);
+		Union2(ho_RegionResult1, ho_RegionResult2, &ho_RegionUnion);
+
 		GrabImageStart(Dlg->hv_AcqHandle, -1);//摄像头句柄打开,但是我行关闭呢 //打开句柄  //把指针传递给你
 		//应该给一个true if true 就继续
 		while (Dlg->JUDEG) {
@@ -101,14 +95,13 @@ void MFC_HALCON_Dlg::PICTURING(MFC_HALCON_Dlg* Dlg) {
 				GrabImageAsync(&Dlg->ho_Image, Dlg->hv_AcqHandle, -1);//就算是这样,也得开多线程
 
 				if (HalconCpp::HDevWindowStack::IsOpen()) {
-					HalconCpp::ZoomImageSize(Dlg->ho_Image, &Dlg->ho_Image, Dlg->rect.Width(), Dlg->rect.Width(), "nearest_neighbor");//只能说写是写好了基本工具
-					//1292
-					;//964
-					DispObj(Dlg->ho_Image, HalconCpp::HDevWindowStack::GetActive());  //一直采集,直到摄像头关闭???
+					HalconCpp::ZoomImageSize(Dlg->ho_Image, &Dlg->ho_Image, Dlg->rect.Height(), Dlg->rect.Height(), "nearest_neighbor");//只能说写是写好了基本工具
+					DispObj(Dlg->ho_Image, HalconCpp::HDevWindowStack::GetActive());  //我不想管//不想测试,如何计算,不知道
+					DispObj(ho_RegionUnion, HalconCpp::HDevWindowStack::GetActive());  //我不想管
 				}
 			}
 			catch (...) {
-				AfxMessageBox(L"异常");
+				AfxMessageBox(L"异常");//不好直接实现啊,真是无语
 			}
 		}
 	};
@@ -151,11 +144,6 @@ void MFC_HALCON_Dlg::RUNPICTRUE(MFC_HALCON_Dlg* Dlg) {
 		DispObj(Dlg->ho_Image, HalconCpp::HDevWindowStack::GetActive());  //一直采集,直到摄像头关闭???
 	}
 }
-
-//打开摄像头,但是不做显示,打开摄像头,做显示
-//突然发现有问题了,打开摄像头是在一个窗口做的 //异步显示还是同步显示  如何显示,写一个halcon打开摄像头函数? //开始异步采集图像,并且显示到窗口,那难度有点大
-// 异步是写在哪里,怎么写,实现异步
-// 头疼的地方来
 
 void MFC_HALCON_Dlg::OnClose() {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值

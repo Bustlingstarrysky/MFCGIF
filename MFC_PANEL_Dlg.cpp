@@ -46,6 +46,7 @@ BEGIN_MESSAGE_MAP(MFC_PANEL_Dlg, CDialogEx)
 	ON_WM_CLOSE()
 	ON_BN_CLICKED(IDC_CAMAPIC, &MFC_PANEL_Dlg::OnBnClickedCamapic)
 	ON_BN_CLICKED(IDC_MYPICTURE, &MFC_PANEL_Dlg::OnBnClickedMypicture)
+	ON_BN_CLICKED(IDC_CMRSET, &MFC_PANEL_Dlg::OnBnClickedCmrset)
 END_MESSAGE_MAP()
 
 // MFC_PANEL_Dlg 消息处理程序
@@ -66,6 +67,7 @@ void MFC_PANEL_Dlg::OnPaint() {
 	WE::GetTheme(WE::GetThemeName()->first)[WE::GetThemeName()->second.first[3]]->run();//就是懒;
 	WE::GetTheme(WE::GetThemeName()->first)[WE::GetThemeName()->second.first[4]]->run();//就是懒;
 	WE::GetTheme(WE::GetThemeName()->first)[WE::GetThemeName()->second.first[5]]->run();//就是懒;
+
 //箭头不用换,但是未来有调用的过程,首先,是一个异步的gif 既然是异步的gif 那就使用呗 // 可以通知重绘,但是有必要吗 每一个都是,难道是双异步??? 搞锤子啊
 }
 
@@ -116,6 +118,8 @@ BOOL MFC_PANEL_Dlg::OnInitDialog() {
 	_ComTheme.AddString(L"主题1");
 	_ComTheme.AddString(L"主题2");
 	_ComTheme.SetCurSel(0);
+
+	_cmfcsetdlg.Create(IDD_SET_DLG, this);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
 }
@@ -199,4 +203,9 @@ void MFC_PANEL_Dlg::OnBnClickedCamapic() {
 void MFC_PANEL_Dlg::OnBnClickedMypicture() {
 	// TODO: 在此添加控件通知处理程序代码
 	WE::RUNTIMING(PANEL_HALCON_ShowPicture);
+}
+
+void MFC_PANEL_Dlg::OnBnClickedCmrset() {
+	// TODO: 在此添加控件通知处理程序代码
+	_cmfcsetdlg.ShowWindow(SW_SHOW); //对啊,为什么窗口显示无反应//不知道
 }

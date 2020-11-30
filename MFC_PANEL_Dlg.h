@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <array>
-
+//#include"CMFC_SET_Dlg.h"
+#include"MFC_SET_DLG.h"
 // MFC_PANEL_Dlg 对话框
 
 class MFC_PANEL_Dlg : public CDialogEx
@@ -31,6 +32,8 @@ public:
 	static void MYHIDE(MFC_PANEL_Dlg*);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	CComboBox _ComTheme;
+
+	MFC_SET_DLG  _cmfcsetdlg;
 	afx_msg void OnCbnSelchangeComtheme();
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	afx_msg void OnBnClickedBreak();
@@ -39,4 +42,5 @@ public:
 	afx_msg void OnClose();
 	afx_msg void OnBnClickedCamapic();
 	afx_msg void OnBnClickedMypicture();
+	afx_msg void OnBnClickedCmrset();
 };

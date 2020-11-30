@@ -8,9 +8,13 @@
 // 规定所有窗口的函数,并且规定哪个给哪个通信 通信窗口 运行窗口 美容
 #define PANEL_MAIN_BREAK 1//退出窗口,由控制面板通知主窗口    写了
 //
+#define SET_摄像机信息_Open 4001
+#define SET_摄像机信息_Close 4002
+#define SET_图像格式控制_Open 4003
+#define SET_图像格式控制_Close 4004
 //
 //
-namespace 未定义 {
+namespace NN {
 #define PANEL_HALCON_OpenCamera 2 // 打开摄像头的消息 //MSG factory 宏定义 // 未定义 ,这个实际上很简单
 #define PANEL_HALCON_Picturing 3 // 实时采集图像
 #define PANEL_HALCON_ShowPicture 4 // 显示采集的图像
@@ -21,9 +25,7 @@ namespace 未定义 {
 #define PANEL_HALCON_PICTURELEFT 8
 #define PANEL_HALCON_PICTURERIGHT 9
 
-//主题可以走消息通知吗,不行,主题消息通知太多,不能作为一个消息来调用
-
-
+	//主题可以走消息通知吗,不行,主题消息通知太多,不能作为一个消息来调用
 }
 namespace WE {
 	//	static	std::map<std::string, std::unique_ptr<WE::MY::function>>* prt;

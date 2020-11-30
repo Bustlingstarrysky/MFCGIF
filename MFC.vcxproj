@@ -71,6 +71,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="D:\halcon配置环境\opencv and 2019.props" />
     <Import Project="D:\halcon配置环境\halcon属性表.props" />
+    <Import Project="D:\halcon配置环境\大恒SDK.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -194,6 +195,9 @@
     <ClInclude Include="MFC_HALCON_Dlg.h" />
     <ClInclude Include="MFC_LIGHT_Dlg.h" />
     <ClInclude Include="MFC_PANEL_Dlg.h" />
+    <ClInclude Include="MFC_PIC_COM_Dlg.h" />
+    <ClInclude Include="MFC_SET_DLG.h" />
+    <ClInclude Include="MFC摄像机信息.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -201,6 +205,7 @@
     <ClInclude Include="第三方代码\gif\MyWay.h" />
     <ClInclude Include="第三方代码\gif\MyWayGifControl.h" />
     <ClInclude Include="第三方代码\gif\PictureEX.h" />
+    <ClInclude Include="第三方代码\halcon\halcon画框.h" />
     <ClInclude Include="第三方代码\implant\implant.h" />
     <ClInclude Include="第三方代码\lucency\lucency.h" />
     <ClInclude Include="第三方代码\modbus\Light.h" />
@@ -211,6 +216,9 @@
     <ClInclude Include="第三方代码\risize\riseze.h" />
     <ClInclude Include="第三方代码\主题\changetheme.hpp" />
     <ClInclude Include="第三方代码\主题\TheamName.h" />
+    <ClInclude Include="第三方代码\大恒相机\Camera.h" />
+    <ClInclude Include="第三方代码\大恒相机\ERROR.h" />
+    <ClInclude Include="第三方代码\大恒相机\设置.h" />
     <ClInclude Include="第三方代码\消息传递\RunMessage.hpp" />
     <ClInclude Include="第三方代码\窗口动画\CDlgFlash.h" />
   </ItemGroup>
@@ -221,6 +229,9 @@
     <ClCompile Include="MFC_HALCON_Dlg.cpp" />
     <ClCompile Include="MFC_LIGHT_Dlg.cpp" />
     <ClCompile Include="MFC_PANEL_Dlg.cpp" />
+    <ClCompile Include="MFC_PIC_COM_Dlg.cpp" />
+    <ClCompile Include="MFC_SET_DLG.cpp" />
+    <ClCompile Include="MFC摄像机信息.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -231,6 +242,7 @@
     <ClCompile Include="第三方代码\gif\MyWay.cpp" />
     <ClCompile Include="第三方代码\gif\MyWayGifControl.cpp" />
     <ClCompile Include="第三方代码\gif\PictureEX.cpp" />
+    <ClCompile Include="第三方代码\halcon\halcon画框.cpp" />
     <ClCompile Include="第三方代码\implant\impalnt.cpp" />
     <ClCompile Include="第三方代码\lucency\lucency.cpp" />
     <ClCompile Include="第三方代码\modbus\Light.cpp" />
@@ -241,6 +253,8 @@
     <ClCompile Include="第三方代码\risize\risize.cpp" />
     <ClCompile Include="第三方代码\主题\changetheme.cpp" />
     <ClCompile Include="第三方代码\主题\ThemeName.cpp" />
+    <ClCompile Include="第三方代码\大恒相机\Camera.cpp" />
+    <ClCompile Include="第三方代码\大恒相机\ERROR.cpp" />
     <ClCompile Include="第三方代码\消息传递\factory.cpp" />
     <ClCompile Include="第三方代码\窗口动画\CDlgFlash.cpp" />
   </ItemGroup>

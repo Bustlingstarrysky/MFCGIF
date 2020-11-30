@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "Light.h"
 
 Light::Light() {
@@ -28,8 +28,8 @@ bool Light::LightChangeNum(unsigned int Num, unsigned  int Lig) {
 	if (_Num > UINT_MAX) {
 		return false;
 	}
-	_byte[_Num] = Lig;//�����ֱ�ӽض�
-	return WriteBool();
+	_byte[_Num] = Lig;//无语了,都
+	return WriteBool();//我觉得有必要弄一个vpn,为什么,信息收集能力
 }
 
 bool Light::LightAllNum(unsigned Lig) {
@@ -47,8 +47,8 @@ bool Light::LightClose() {
 }
 
 void Light::ByteZest(unsigned int Num) {
-	for (int i = 0; i < 8; ++i) {
-		_byte[i] = Num;
+	for (unsigned char& i : _byte) {
+		i = Num;//i个锤子i啊,就这样当作把
 	}
 }
 
